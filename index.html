@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以你为名的夏天 —— 高考加油 · 张雨洁</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&family=Long+Cang&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ocean-deep: #3a6b7c;
+    --ocean-mid: #5b9aaa;
+    --ocean-light: #a8d8de;
+    --sky-top: #c9e8f2;
+    --sunset: #f2c4b8;
+    --sunset-warm: #f0b8a0;
+    --sand: #faf5ee;
+    --sand-warm: #f5ebe0;
+    --coral: #e88a7a;
+    --coral-deep: #d4685a;
+    --star-gold: #e8c860;
+    --star-light: #f5e8b0;
+    --foam: #f8fafb;
+    --ink: #2c4450;
+    --ink-soft: #507080;
+    --shell: #faf3ed;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--ink);
+    padding: 20px;
+    overflow-x: hidden;
+    /* Summer twilight sky gradient */
+    background: linear-gradient(175deg,
+      #c9eaf5 0%,
+      #d4edf5 15%,
+      #e8f0f0 30%,
+      #f5ece4 45%,
+      #fae8dd 55%,
+      #f8dcd0 70%,
+      #f0cfc0 85%,
+      #e8c8b8 100%
+    );
+    background-attachment: fixed;
+  }
+
+  /* Ocean wave pattern overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.25;
+    background:
+      /* Wave lines */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 58px,
+        rgba(91,154,170,0.08) 58px,
+        rgba(91,154,170,0.08) 60px
+      ),
+      /* Second wave layer offset */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 82px,
+        rgba(91,154,170,0.05) 82px,
+        rgba(91,154,170,0.05) 84px
+      );
+  }
+
+  /* Floating sparkles layer */
+  .sparkle-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--star-gold);
+    box-shadow: 0 0 4px 1px rgba(232,200,96,0.5);
+    animation: sparkleFloat 8s ease-in-out infinite;
+  }
+  @keyframes sparkleFloat {
+    0%, 100% { transform: translate(0, 0) scale(0.5); opacity: 0.2; }
+    20% { transform: translate(15px, -40px) scale(1.2); opacity: 0.9; }
+    40% { transform: translate(-10px, -80px) scale(0.6); opacity: 0.3; }
+    60% { transform: translate(20px, -120px) scale(1); opacity: 0.7; }
+    80% { transform: translate(-5px, -60px) scale(0.4); opacity: 0.2; }
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(168,216,222,0.5);
+    background: rgba(255,255,255,0.15);
+    animation: bubbleRise 10s ease-in infinite;
+  }
+  @keyframes bubbleRise {
+    0% { transform: translateY(105vh) translateX(0) scale(0.3); opacity: 0; }
+    15% { opacity: 0.6; }
+    85% { opacity: 0.4; }
+    100% { transform: translateY(-10vh) translateX(30px) scale(1); opacity: 0; }
+  }
+
+  /* Floating shells */
+  .shell-float {
+    position: absolute;
+    opacity: 0.5;
+    animation: shellDrift 14s ease-in-out infinite;
+  }
+  @keyframes shellDrift {
+    0%   { transform: translateY(105vh) translateX(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.5; }
+    45%  { transform: translateY(50vh) translateX(40px) rotate(120deg); opacity: 0.55; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(-10vh) translateX(-20px) rotate(360deg); opacity: 0; }
+  }
+
+  /* Floating petals */
+  .petal-float {
+    position: absolute;
+    animation: petalFall 12s linear infinite;
+    opacity: 0.5;
+  }
+  @keyframes petalFall {
+    0%   { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+    8%   { opacity: 0.55; }
+    50%  { transform: translateY(50vh) rotate(300deg) translateX(40px); opacity: 0.5; }
+    92%  { opacity: 0.45; }
+    100% { transform: translateY(108vh) rotate(720deg) translateX(-20px); opacity: 0; }
+  }
+
+  /* Starfish */
+  .starfish-float {
+    position: absolute;
+    opacity: 0.4;
+    animation: starfishWander 18s ease-in-out infinite;
+  }
+  @keyframes starfishWander {
+    0%   { transform: translateY(105vh) translateX(0) rotate(0deg); opacity: 0; }
+    8%   { opacity: 0.4; }
+    40%  { transform: translateY(35vh) translateX(60px) rotate(90deg); opacity: 0.45; }
+    70%  { transform: translateY(15vh) translateX(-30px) rotate(200deg); opacity: 0.35; }
+    92%  { opacity: 0.3; }
+    100% { transform: translateY(-10vh) translateX(20px) rotate(360deg); opacity: 0; }
+  }
+
+  /* Main card — like sea glass / message in a bottle */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    width: 100%;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.85) 0%,
+      rgba(250,245,238,0.88) 50%,
+      rgba(250,240,232,0.85) 100%
+    );
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(91,154,170,0.25);
+    border-radius: 8px;
+    padding: 50px 40px 40px;
+    box-shadow:
+      0 8px 32px rgba(58,107,124,0.08),
+      0 2px 8px rgba(58,107,124,0.04),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+    /* Subtle inner glow */
+    outline: 1px solid rgba(168,216,222,0.3);
+    outline-offset: -8px;
+  }
+
+  /* Corner seashells */
+  .corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+  }
+  .corner-tl { top: 10px; left: 10px; }
+  .corner-tr { top: 10px; right: 10px; }
+  .corner-bl { bottom: 10px; left: 10px; }
+  .corner-br { bottom: 10px; right: 10px; }
+  .corner svg { width: 100%; height: 100%; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  /* Wave line decoration */
+  .wave-deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .wave-line {
+    height: 18px;
+    width: 80px;
+    position: relative;
+  }
+  .wave-line svg { width: 100%; height: 100%; }
+
+  .sea-star {
+    font-size: 1.1em;
+    color: var(--star-gold);
+    animation: twinkle 2.5s ease-in-out infinite;
+  }
+  .sea-star:nth-child(2) { animation-delay: 1s; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.7); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+    color: #fff;
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 0.95rem;
+    padding: 5px 22px;
+    border-radius: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 12px rgba(212,104,90,0.2);
+  }
+
+  .title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2.6rem;
+    color: var(--ink);
+    letter-spacing: 6px;
+    line-height: 1.4;
+  }
+  .title .highlight {
+    display: inline-block;
+    position: relative;
+    color: var(--coral-deep);
+  }
+  .title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--star-light);
+    border-radius: 2px;
+    z-index: -1;
+    opacity: 0.7;
+  }
+
+  .subtitle {
+    font-family: 'Long Cang', cursive;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    letter-spacing: 2px;
+  }
+
+  /* Sea breeze swirl */
+  .breeze {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* Name section */
+  .name-section {
+    text-align: center;
+    margin: 24px 0;
+    position: relative;
+  }
+  .name-card {
+    display: inline-block;
+    position: relative;
+    padding: 14px 36px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(168,216,222,0.3);
+  }
+  .name-label {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    letter-spacing: 4px;
+    margin-bottom: 6px;
+  }
+  .name {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 3rem;
+    color: var(--ink);
+    letter-spacing: 10px;
+  }
+  .name-underline {
+    display: block;
+    margin: 2px auto 0;
+    width: 160px;
+    height: 10px;
+  }
+  .name-underline svg { width: 100%; height: 100%; }
+
+  /* Illustration area */
+  .illustration {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 28px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+  }
+  .illo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .illo-item svg {
+    width: 58px;
+    height: 58px;
+  }
+  .illo-label {
+    font-family: 'Long Cang', cursive;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* Messages */
+  .messages {
+    margin: 26px 0;
+  }
+  .msg {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-align: center;
+    line-height: 2.3;
+    letter-spacing: 2px;
+    padding: 14px 16px;
+    position: relative;
+  }
+  /* Decorative quotes */
+  .msg::before,
+  .msg::after {
+    font-size: 1.6rem;
+    color: var(--ocean-mid);
+    opacity: 0.35;
+    position: absolute;
+  }
+  .msg::before { content: '「'; top: 0; left: 4px; }
+  .msg::after  { content: '」'; bottom: 0; right: 4px; }
+
+  .msg .em {
+    color: var(--coral-deep);
+    font-weight: bold;
+  }
+
+  .msg-divider {
+    text-align: center;
+    margin: 6px 0;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .msg-divider span { color: var(--ocean-mid); font-size: 0.8rem; }
+
+  .novel-ref {
+    font-size: 0.95rem !important;
+    color: var(--ink-soft) !important;
+    opacity: 0.75;
+  }
+
+  /* Stamp — like a seal on a beach postcard */
+  .stamp-area { text-align: center; margin-top: 26px; }
+  .stamp {
+    display: inline-block;
+    width: 78px;
+    height: 78px;
+    border: 3px solid var(--coral);
+    border-radius: 50%;
+    position: relative;
+    transform: rotate(-10deg);
+    color: var(--coral);
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.4rem;
+    line-height: 72px;
+    letter-spacing: 2px;
+    opacity: 0.85;
+    box-shadow: 0 0 0 3px rgba(250,245,238,0.8), 0 0 0 6px var(--coral);
+    background: rgba(232,138,122,0.06);
+  }
+  .stamp-sub {
+    font-family: 'Long Cang', cursive;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-top: 16px;
+    letter-spacing: 2px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Long Cang', cursive;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    letter-spacing: 2px;
+  }
+  .footer::before { content: '~ '; color: var(--ocean-mid); }
+  .footer::after  { content: ' ~'; color: var(--ocean-mid); }
+
+  /* Novel credit — prominent */
+  .novel-credit-wrapper { text-align: center; margin-top: 16px; }
+  .novel-credit {
+    display: inline-block;
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1rem;
+    color: var(--ocean-deep);
+    letter-spacing: 3px;
+    padding: 8px 28px;
+    background: rgba(168,216,222,0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(91,154,170,0.2);
+    position: relative;
+  }
+  .novel-credit::before,
+  .novel-credit::after {
+    content: '✧';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--star-gold);
+    font-size: 0.7rem;
+    opacity: 0.6;
+  }
+  .novel-credit::before { left: -20px; }
+  .novel-credit::after  { right: -20px; }
+
+  /* Floating sea glass effect on hover (desktop) */
+  @media (hover: hover) {
+    .container:hover {
+      box-shadow:
+        0 12px 40px rgba(58,107,124,0.12),
+        0 4px 16px rgba(58,107,124,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+      transition: box-shadow 0.6s ease;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 30px 16px 28px; }
+    .title { font-size: 1.8rem; letter-spacing: 3px; }
+    .name { font-size: 2.3rem; letter-spacing: 6px; }
+    .msg { font-size: 0.95rem; line-height: 2; }
+    .illustration { gap: 16px; }
+    .illo-item svg { width: 44px; height: 44px; }
+    .breeze { display: none; }
+  }
+
+  /* ============ Cover / Landing Screen ============ */
+  .cover {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: inherit;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  .cover.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .cover-inner {
+    text-align: center;
+    animation: coverFloat 3s ease-in-out infinite;
+  }
+  @keyframes coverFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .cover-icon {
+    margin-bottom: 24px;
+    animation: coverPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes coverPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.06); opacity: 1; }
+  }
+
+  .cover-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2.8rem;
+    color: var(--ink);
+    letter-spacing: 8px;
+    margin-bottom: 12px;
+  }
+  .cover-title .hl {
+    color: var(--coral-deep);
+    position: relative;
+  }
+
+  .cover-sub {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    letter-spacing: 4px;
+  }
+
+  .cover-hint {
+    margin-top: 36px;
+    font-family: 'Long Cang', cursive;
+    font-size: 1rem;
+    color: var(--ocean-mid);
+    letter-spacing: 3px;
+    animation: hintBlink 2s ease-in-out infinite;
+  }
+  @keyframes hintBlink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .cover-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    .cover-title { font-size: 2rem; letter-spacing: 4px; }
+    .cover-sub { font-size: 0.9rem; }
+    .cover-icon svg { width: 80px; height: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Audio -->
+<audio id="bgm" loop preload="auto">
+  <source src="./bgm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Cover Screen -->
+<div class="cover" id="cover">
+  <div class="cover-inner">
+    <div class="cover-icon">
+      <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+        <!-- Message bottle -->
+        <rect x="35" y="25" width="30" height="45" rx="12" stroke="#5b9aaa" stroke-width="2" fill="rgba(168,216,222,0.12)"/>
+        <rect x="40" y="18" width="20" height="10" rx="3" stroke="#5b9aaa" stroke-width="2" fill="rgba(168,216,222,0.08)"/>
+        <!-- Cork -->
+        <rect x="42" y="14" width="16" height="6" rx="2" stroke="#5b9aaa" stroke-width="1.8" fill="rgba(232,184,75,0.2)"/>
+        <!-- Star inside bottle -->
+        <polygon points="50,35 52,45 62,45 54,51 57,61 50,55 43,61 46,51 38,45 48,45"
+                 fill="rgba(232,200,96,0.3)" stroke="#e8c860" stroke-width="1"/>
+        <!-- Wave lines at bottom of bottle -->
+        <path d="M38 58 Q45 54 50 58 T62 58" stroke="#5b9aaa" stroke-width="1.2" fill="none" opacity="0.5"/>
+        <path d="M40 63 Q47 59 52 63 T60 63" stroke="#5b9aaa" stroke-width="1" fill="none" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="cover-title">
+      以你为名的<span class="hl">夏天</span>
+    </div>
+    <div class="cover-sub">—— 致 张雨洁 ——</div>
+    <div class="cover-hint">✧ 轻触开启 ✧</div>
+  </div>
+
+  <!-- Bottom wave decoration -->
+  <svg class="cover-waves" viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
+    <path d="M0 60 Q180 20 360 50 T720 45 T1080 55 T1440 40 L1440 120 L0 120Z"
+          fill="rgba(91,154,170,0.08)"/>
+    <path d="M0 75 Q180 45 360 65 T720 60 T1080 70 T1440 55 L1440 120 L0 120Z"
+          fill="rgba(91,154,170,0.05)"/>
+  </svg>
+</div>
+
+<!-- Sparkles and bubbles -->
+<div class="sparkle-layer" id="sparkles"></div>
+
+<!-- Sea breeze decoration -->
+<svg class="breeze" width="70" height="30" viewBox="0 0 70 30" fill="none" stroke="#5b9aaa" stroke-width="1.2" stroke-linecap="round" opacity="0.4">
+  <path d="M5 20 Q15 12 25 18 T45 14 T65 18" />
+  <path d="M10 25 Q20 18 30 22 T50 18 T68 22" opacity="0.5"/>
+</svg>
+
+<div class="container">
+  <!-- Corners — seashell style -->
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 40 40" fill="none" stroke="#5b9aaa" stroke-width="1.5">
+      <path d="M4 22 Q4 4 22 4" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="2.5" fill="#a8d8de" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 40 40" fill="none" stroke="#5b9aaa" stroke-width="1.5">
+      <path d="M36 22 Q36 4 18 4" stroke-linecap="round"/>
+      <circle cx="28" cy="12" r="2.5" fill="#e8c860" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 40 40" fill="none" stroke="#5b9aaa" stroke-width="1.5">
+      <path d="M4 18 Q4 36 22 36" stroke-linecap="round"/>
+      <circle cx="14" cy="28" r="2.5" fill="#f2c4b8" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 40 40" fill="none" stroke="#5b9aaa" stroke-width="1.5">
+      <path d="M36 18 Q36 36 18 36" stroke-linecap="round"/>
+      <circle cx="26" cy="28" r="2.5" fill="#a8d8de" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="wave-deco">
+      <div class="wave-line">
+        <svg viewBox="0 0 80 18" fill="none" stroke="#5b9aaa" stroke-width="1.5" stroke-linecap="round">
+          <path d="M2 10 Q15 2 28 10 T54 10 T78 10" opacity="0.6"/>
+        </svg>
+      </div>
+      <span class="sea-star">✧</span>
+      <span class="sea-star">✦</span>
+      <div class="wave-line">
+        <svg viewBox="0 0 80 18" fill="none" stroke="#5b9aaa" stroke-width="1.5" stroke-linecap="round">
+          <path d="M2 10 Q15 2 28 10 T54 10 T78 10" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="badge">✦ 2026 · 高考必胜 ✦</div>
+    <h1 class="title">
+      以你为名的<span class="highlight">夏天</span>
+    </h1>
+    <div class="subtitle">—— 海风吹醒十八岁的梦 ——</div>
+  </div>
+
+  <!-- Name -->
+  <div class="name-section">
+    <div class="name-card">
+      <div class="name-label">🌊 致 · 那个肩上有风的女孩 🌊</div>
+      <div class="name">张 雨 洁</div>
+      <div class="name-underline">
+        <svg viewBox="0 0 160 12" fill="none">
+          <path d="M5 6 Q25 2 50 7 T100 5 T155 6" stroke="#5b9aaa" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 7 Q30 3 55 8 T105 6 T152 7" stroke="#a8d8de" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Illustrations — summer / ocean themed -->
+  <div class="illustration">
+    <!-- Paper boat on waves -->
+    <div class="illo-item">
+      <svg viewBox="0 0 60 60" fill="none" stroke="#3a6b7c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Waves -->
+        <path d="M4 44 Q12 38 20 44 T36 44 T52 44" fill="rgba(91,154,170,0.15)" stroke-width="1.2"/>
+        <path d="M8 50 Q16 44 24 50 T40 50 T56 50" fill="rgba(91,154,170,0.1)" stroke-width="1.2" opacity="0.6"/>
+        <!-- Paper boat -->
+        <polygon points="30,28 18,42 42,42" fill="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+        <line x1="30" y1="28" x2="30" y2="20" stroke-width="1.2"/>
+        <polygon points="30,20 24,26 30,25 36,26" fill="rgba(232,200,96,0.25)" stroke-width="1"/>
+        <!-- Little star on sail -->
+        <text x="27" y="27" font-size="7" fill="#e8c860" stroke="none" opacity="0.7">★</text>
+      </svg>
+      <span class="illo-label">扬帆起航</span>
+    </div>
+
+    <!-- Seashell -->
+    <div class="illo-item">
+      <svg viewBox="0 0 60 60" fill="none" stroke="#3a6b7c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M30 52 Q18 42 14 34 Q10 26 14 22 Q20 18 30 24 Q40 18 46 22 Q50 26 46 34 Q42 42 30 52Z" fill="rgba(250,243,237,0.5)"/>
+        <path d="M30 52 Q24 44 20 34" stroke-width="1" opacity="0.4"/>
+        <path d="M30 52 Q30 38 30 24" stroke-width="1" opacity="0.4"/>
+        <path d="M30 52 Q36 44 40 34" stroke-width="1" opacity="0.4"/>
+        <circle cx="30" cy="30" r="2" fill="rgba(232,200,96,0.35)" stroke="none"/>
+      </svg>
+      <span class="illo-label">珍藏时光</span>
+    </div>
+
+    <!-- Lighthouse -->
+    <div class="illo-item">
+      <svg viewBox="0 0 60 60" fill="none" stroke="#3a6b7c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="20" width="12" height="30" rx="3" fill="rgba(232,138,122,0.15)"/>
+        <rect x="26" y="22" width="8" height="6" rx="1" fill="rgba(232,200,96,0.2)" stroke-width="1"/>
+        <rect x="26" y="30" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)" stroke-width="1"/>
+        <rect x="26" y="38" width="8" height="6" rx="1" fill="rgba(232,200,96,0.2)" stroke-width="1"/>
+        <!-- Light rays -->
+        <line x1="30" y1="22" x2="18" y2="14" stroke="#e8c860" stroke-width="1" opacity="0.5"/>
+        <line x1="30" y1="22" x2="42" y2="14" stroke="#e8c860" stroke-width="1" opacity="0.5"/>
+        <line x1="30" y1="22" x2="14" y2="22" stroke="#e8c860" stroke-width="1" opacity="0.3"/>
+        <line x1="30" y1="22" x2="46" y2="22" stroke="#e8c860" stroke-width="1" opacity="0.3"/>
+        <!-- Base rocks -->
+        <ellipse cx="30" cy="52" rx="10" ry="3" fill="rgba(168,216,222,0.2)"/>
+      </svg>
+      <span class="illo-label">灯塔指引</span>
+    </div>
+
+    <!-- Ocean wave -->
+    <div class="illo-item">
+      <svg viewBox="0 0 60 60" fill="none" stroke="#3a6b7c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 28 Q12 20 20 28 T36 28 T52 28" fill="rgba(91,154,170,0.15)"/>
+        <path d="M6 36 Q14 28 22 36 T38 36 T54 36" fill="rgba(91,154,170,0.1)"/>
+        <path d="M4 44 Q12 36 20 44 T36 44 T52 44" fill="rgba(91,154,170,0.05)"/>
+        <!-- Foam dots -->
+        <circle cx="16" cy="27" r="1.5" fill="rgba(255,255,255,0.6)" stroke="none"/>
+        <circle cx="30" cy="27" r="1.5" fill="rgba(255,255,255,0.6)" stroke="none"/>
+        <circle cx="44" cy="27" r="1.5" fill="rgba(255,255,255,0.6)" stroke="none"/>
+      </svg>
+      <span class="illo-label">乘风破浪</span>
+    </div>
+
+    <!-- Star / wish -->
+    <div class="illo-item">
+      <svg viewBox="0 0 60 60" fill="none" stroke="#3a6b7c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Night sky glow -->
+        <circle cx="30" cy="28" r="18" fill="rgba(168,216,222,0.1)"/>
+        <!-- Big star -->
+        <polygon points="30,8 33,22 48,22 36,30 40,44 30,36 20,44 24,30 12,22 27,22"
+                 fill="rgba(232,200,96,0.25)" stroke="#e8c860" stroke-width="1.3"/>
+        <!-- Small stars around -->
+        <circle cx="14" cy="14" r="1.5" fill="#e8c860" stroke="none" opacity="0.5"/>
+        <circle cx="46" cy="18" r="1" fill="#e8c860" stroke="none" opacity="0.4"/>
+        <circle cx="42" cy="42" r="1.2" fill="#e8c860" stroke="none" opacity="0.35"/>
+        <circle cx="18" cy="40" r="1" fill="#e8c860" stroke="none" opacity="0.45"/>
+      </svg>
+      <span class="illo-label">星光不负</span>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="messages">
+    <p class="msg">
+      蹉跎者光阴如梭，<br>
+      <span class="em">有志者岁月如歌</span>。<br>
+      比别人多了一个<span class="em">夏天</span>，<br>
+      就比别人多了一次<span class="em">潮起</span>的力量。<br>
+      每一道题都是你与梦想的<span class="em">对白</span>。
+    </p>
+    <div class="msg-divider"><span>✧ ✧ ✧</span></div>
+    <p class="msg">
+      这多出来的一年，<br>
+      不是等待，是<span class="em">蓄力</span>。<br>
+      就像那颗耀眼的星星，<br>
+      终将<span class="em">通亮</span>整片荒芜的小宇宙。<br>
+      海风会记得——<br>
+      <span class="em">这个夏天，以你为名。</span>
+    </p>
+    <div class="msg-divider"><span>✧ ✧ ✧</span></div>
+    <p class="msg novel-ref">
+      一任闲言碎语多，唇枪舌刃又如何？<br>
+      尘泥怎解冰心结？<br>
+      <span class="em">我自逍遥我自歌。</span>
+    </p>
+  </div>
+
+  <!-- Stamp -->
+  <div class="stamp-area">
+    <div class="stamp">必胜</div>
+    <div class="stamp-sub">张雨洁 · 2026 高考加油</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    所念皆星河&ensp;所愿皆成真&ensp;笔下生花&ensp;金榜题名
+  </div>
+
+  <!-- Novel credit -->
+  <div class="novel-credit-wrapper">
+    <span class="novel-credit">「以你为名的夏天」任凭舟</span>
+  </div>
+</div>
+
+<script>
+// Cover interaction — click to enter
+(function() {
+  const cover = document.getElementById('cover');
+  const bgm = document.getElementById('bgm');
+
+  cover.addEventListener('click', function() {
+    // Play music
+    bgm.volume = 0.5;
+    bgm.play().catch(function(e) {
+      console.log('Audio play failed:', e);
+    });
+
+    // Hide cover
+    cover.classList.add('hidden');
+  });
+
+  // Also allow keyboard / touch
+  cover.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    cover.click();
+  });
+})();
+
+// Sparkles and bubbles + shells + petals
+(function() {
+  const layer = document.getElementById('sparkles');
+
+  // Sparkles
+  for (let i = 0; i < 20; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = (3 + Math.random() * 94) + '%';
+    s.style.top = (5 + Math.random() * 85) + '%';
+    s.style.animationDuration = (6 + Math.random() * 12) + 's';
+    s.style.animationDelay = Math.random() * 10 + 's';
+    layer.appendChild(s);
+  }
+
+  // Bubbles
+  for (let i = 0; i < 16; i++) {
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    const size = 4 + Math.random() * 10;
+    b.style.width = size + 'px';
+    b.style.height = size + 'px';
+    b.style.left = (5 + Math.random() * 90) + '%';
+    b.style.animationDuration = (8 + Math.random() * 14) + 's';
+    b.style.animationDelay = Math.random() * 12 + 's';
+    layer.appendChild(b);
+  }
+
+  // Shell SVGs
+  const shellSvgs = [
+    `<svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 17 Q4 13 3 9 Q2 5 5 3 Q8 1 9 5 Q10 1 13 3 Q16 5 15 9 Q14 13 9 17Z" fill="rgba(250,243,237,0.55)" stroke="rgba(91,154,170,0.5)" stroke-width="0.6"/><path d="M9 17 Q7 12 6 9" stroke="rgba(91,154,170,0.3)" stroke-width="0.5"/><path d="M9 17 Q9 9 9 5" stroke="rgba(91,154,170,0.3)" stroke-width="0.5"/><path d="M9 17 Q11 12 12 9" stroke="rgba(91,154,170,0.3)" stroke-width="0.5"/></svg>`,
+    `<svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 13 Q3 10 2 7 Q1 3 4 2 Q7 1 7 4 Q7 1 10 2 Q13 3 12 7 Q11 10 7 13Z" fill="rgba(245,235,224,0.5)" stroke="rgba(91,154,170,0.4)" stroke-width="0.5"/><circle cx="7" cy="6" r="1.2" fill="rgba(232,200,96,0.3)"/></svg>`,
+    `<svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 15 Q3 12 2 8 Q1 4 4 3 Q8 2 8 5 Q8 2 12 3 Q15 4 14 8 Q13 12 8 15Z" fill="rgba(255,248,245,0.5)" stroke="rgba(232,138,122,0.45)" stroke-width="0.6"/><path d="M8 15 Q7 10 6 8" stroke="rgba(232,138,122,0.25)" stroke-width="0.4"/></svg>`,
+  ];
+
+  for (let i = 0; i < 10; i++) {
+    const sh = document.createElement('div');
+    sh.className = 'shell-float';
+    sh.innerHTML = shellSvgs[i % shellSvgs.length];
+    sh.style.left = (2 + Math.random() * 94) + '%';
+    sh.style.animationDuration = (12 + Math.random() * 18) + 's';
+    sh.style.animationDelay = Math.random() * 16 + 's';
+    layer.appendChild(sh);
+  }
+
+  // Floating petals
+  const petalSvgs = [
+    `<svg width="14" height="14" viewBox="0 0 14 14"><ellipse cx="7" cy="7" rx="5" ry="3" fill="rgba(242,196,184,0.5)" stroke="rgba(232,138,122,0.3)" stroke-width="0.5" transform="rotate(30 7 7)"/></svg>`,
+    `<svg width="12" height="12" viewBox="0 0 12 12"><ellipse cx="6" cy="6" rx="4" ry="2.5" fill="rgba(240,180,165,0.5)" stroke="rgba(232,138,122,0.3)" stroke-width="0.5" transform="rotate(-20 6 6)"/></svg>`,
+    `<svg width="10" height="10" viewBox="0 0 10 10"><ellipse cx="5" cy="5" rx="3.5" ry="2" fill="rgba(245,200,190,0.45)" stroke="rgba(220,150,140,0.3)" stroke-width="0.4" transform="rotate(60 5 5)"/></svg>`,
+    `<svg width="13" height="13" viewBox="0 0 13 13"><ellipse cx="6.5" cy="6.5" rx="4.5" ry="2.8" fill="rgba(248,210,198,0.5)" stroke="rgba(232,138,122,0.3)" stroke-width="0.5" transform="rotate(-45 6.5 6.5)"/></svg>`,
+    `<svg width="11" height="11" viewBox="0 0 11 11"><ellipse cx="5.5" cy="5.5" rx="4" ry="2.2" fill="rgba(235,185,170,0.48)" stroke="rgba(210,140,128,0.3)" stroke-width="0.5" transform="rotate(15 5.5 5.5)"/></svg>`,
+  ];
+
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal-float';
+    p.innerHTML = petalSvgs[i % petalSvgs.length];
+    p.style.left = (1 + Math.random() * 97) + '%';
+    p.style.animationDuration = (8 + Math.random() * 16) + 's';
+    p.style.animationDelay = Math.random() * 14 + 's';
+    layer.appendChild(p);
+  }
+
+  // Starfish
+  const starfishSvgs = [
+    `<svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 10,5 14,5 11,8 12,13 8,10 4,13 5,8 2,5 6,5" fill="rgba(232,138,122,0.35)" stroke="rgba(212,104,90,0.4)" stroke-width="0.5"/></svg>`,
+    `<svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,0 9,5 13.5,5 10,8 11,12.5 7,9.5 3,12.5 4,8 0.5,5 5,5" fill="rgba(240,160,140,0.3)" stroke="rgba(212,104,90,0.35)" stroke-width="0.5"/></svg>`,
+  ];
+
+  for (let i = 0; i < 6; i++) {
+    const sf = document.createElement('div');
+    sf.className = 'starfish-float';
+    sf.innerHTML = starfishSvgs[i % starfishSvgs.length];
+    sf.style.left = (3 + Math.random() * 92) + '%';
+    sf.style.animationDuration = (15 + Math.random() * 20) + 's';
+    sf.style.animationDelay = Math.random() * 20 + 's';
+    layer.appendChild(sf);
+  }
+})();
+
+</script>
+</body>
+</html>
